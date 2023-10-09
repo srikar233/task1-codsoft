@@ -1,0 +1,53 @@
+tasks = {}
+
+def display_menu():
+    print("To-Do List Menu:")
+    print("1. Add Task")
+    print("2. Update Task")
+    print("3. View Tasks")
+    print("4. Quit")
+
+def add_task():
+    task_name = input("Enter task name: ")
+    task_description = input("Enter task description: ")
+    tasks[task_name] = task_description
+    print(f"Task '{task_name}' added successfully!")
+
+def update_task():
+    task_name = input("Enter the name of the task to update: ")
+    if task_name in tasks:
+        new_description = input("Enter the new description: ")
+        tasks[task_name] = new_description
+        print(f"Task '{task_name}' updated successfully!")
+    else:
+        print(f"Task '{task_name}' not found!")
+
+def view_tasks():
+    if not tasks:
+        print("No tasks in the to-do list.")
+    else:
+        print("To-Do List:")
+        for task_name, task_description in tasks.items():
+            print(f"Task: {task_name}")
+            print(f"Description: {task_description}")
+            print()
+
+def main():
+    while True:
+        display_menu()
+        choice = input("Enter your choice: ")
+        
+        if choice == "1":
+            add_task()
+        elif choice == "2":
+            update_task()
+        elif choice == "3":
+            view_tasks()
+        elif choice == "4":
+            print("Exiting the To-Do List application.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
